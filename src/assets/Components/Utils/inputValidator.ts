@@ -11,6 +11,7 @@ export const inputValidator = (value: string): {errorMsg: string, sanitizedValue
       } else if (leadingZero.test(value)) {
         errorMsg = `Can't be zero`;
         isError = true;
+        sanitizedValue = value.replace(regEx, "").trim();
       } else {
         sanitizedValue = value.replace(regEx, "").trim();
       }
