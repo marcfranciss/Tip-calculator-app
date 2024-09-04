@@ -1,0 +1,39 @@
+.input-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 48px;
+  padding: 6px 1rem;
+  background-color: var(--dark-cyan-400);
+  color: var(--dark-cyan-900);
+  border-radius: 5px;
+  transition: all 0.7 linear;
+
+  img {
+    max-width: 13px;
+    max-height: 1rem;
+  }
+  input {
+    all: unset;
+    width: 100%;
+    font-family: inherit;
+    color: var(--dark-cyan-900);
+    font-weight: 700;
+    font-size: 1.5rem;
+    text-align: right;
+    cursor: auto;
+  }
+}
+
+.input-box:hover {
+  outline: 2px solid var(--cyan);
+}
+.input-box:has(input:focus-within) {
+  outline: 2px solid var(--cyan);
+}
+
+.input-box.error {
+  outline: 2px solid var(--error) !important;
+}

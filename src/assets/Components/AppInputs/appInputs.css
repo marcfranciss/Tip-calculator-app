@@ -1,0 +1,12 @@
+.app-inputs {
+  margin-block: 13px 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+@media (max-width: 48rem) {
+  .app-inputs {
+    gap: 2rem;
+  }
+}

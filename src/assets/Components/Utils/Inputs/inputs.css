@@ -1,0 +1,10 @@
+.input-data {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.input-text-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

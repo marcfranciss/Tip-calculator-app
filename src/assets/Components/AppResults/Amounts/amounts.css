@@ -1,0 +1,32 @@
+.amounts-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.amounts-labels {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.amounts-text {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--white);
+}
+.amounts-misc {
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--dark-cyan-300);
+}
+
+.amount {
+  display: flex;
+  flex-direction: row;
+}
+.calc-amount {
+  font-weight: 700;
+  font-size: 3rem;
+  letter-spacing: -1px;
+  color: var(--cyan);
+}

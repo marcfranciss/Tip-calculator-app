@@ -1,0 +1,69 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+:root {
+  /* ### Primary */
+
+  --cyan: hsl(172, 67%, 45%);
+
+  /* ### Neutral */
+
+  --dark-cyan-900: hsl(183, 100%, 15%);
+  --dark-cyan-800: hsl(186, 14%, 43%);
+  --dark-cyan-700: hsl(184, 14%, 56%);
+  --dark-cyan-600: hsl(185, 41%, 84%);
+  --dark-cyan-500: hsl(189, 41%, 97%);
+  --dark-cyan-400: hsl(185, 38%, 97%);
+  --dark-cyan-300: hsl(183, 15%, 56%);
+  --dark-cyan-200: hsl(183, 78%, 24%);
+  --white: hsl(0, 0%, 100%);
+  --error: hsl(13, 70%, 61%);
+}
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  max-width: 1440px;
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Space Mono", monospace;
+  font-style: normal;
+}
+main {
+  width: 100%;
+  padding-block: 163px 239px;
+  padding-inline: 260px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+section.calculator-app {
+  width: 100%;
+  max-width: 920px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 82px;
+
+  .app {
+    display: flex;
+    flex-direction: row;
+    padding-block: 2rem;
+    padding-inline: 3rem 2rem;
+    gap: 3rem;
+
+    & > :nth-child(1) {
+      max-width: 379px;
+    }
+    & > :nth-child(2) {
+      width: 413px;
+      height: 417px;
+    }
+  }
+}
