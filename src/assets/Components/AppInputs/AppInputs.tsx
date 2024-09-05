@@ -10,23 +10,34 @@ import { useInputContext } from "../../Context/InputContext";
 export const AppInputs = () => {
   const [billAmount, setBillAmount] = useState<string>("");
   const [numPeople, setNumPeople] = useState<string>("");
-  const { setResult, setEnableReset } = useInputContext();
+  const { percentVal, setResult, setDisableReset, setTipAmountPP } =
+    useInputContext();
 
   useEffect(() => {
-    const handleValues = (value1: string, value2: string) => {
-      if (value1 == "" || value2 == "") {
-        setResult(0);
-        setEnableReset(true);
-      } else {
-        const convertedVal1 = Number(value1).toFixed(2);
-        const convertedVal2 = Number(value2).toFixed(2);
-        const calculatedVal = Number(convertedVal1) / Number(convertedVal2);
-        setResult(Number(calculatedVal.toFixed(2)));
-        setEnableReset(false);
+    const handleValues = (value1: string, value2: string, value3: number) => {
+      const convertedVal1 = Number(value1);
+      const convertedVal2 = Number(value2);
+      const convertedVal3 = Number(value3) / 100;
+      if (Number(value1) > 0 && Number(value2) > 0) {
+        const percentageVal = (convertedVal1 * convertedVal3) / convertedVal2;
+        const perPersonVal = Number(convertedVal1) / Number(convertedVal2);
+        const totalVal = perPersonVal + percentageVal;
+        console.log(
+          `Amount: ${convertedVal1}\n
+          NumPeople: ${value2}\n 
+          Prcntage: ${convertedVal3}\n --- \n
+          Tip/p: ${percentageVal}\n
+          Total/p (w/o tip): ${perPersonVal}\n
+          Total/p: ${totalVal}`
+        );
+
+        setTipAmountPP(percentageVal);
+        setResult(Number(totalVal.toFixed(2)));
+        setDisableReset(false);
       }
     };
-    handleValues(billAmount, numPeople);
-  }, [billAmount, numPeople]);
+    handleValues(billAmount, numPeople, percentVal);
+  }, [billAmount, numPeople, percentVal]);
 
   return (
     <div className='app-inputs'>

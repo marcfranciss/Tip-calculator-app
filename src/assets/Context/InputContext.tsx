@@ -1,12 +1,18 @@
 import { createContext, ReactNode, useContext, useState } from "react";
 
 interface InputContextType {
-  enableReset: boolean;
-  setEnableReset: (value: boolean) => void;
+  percentVal: number;
+  setPercentVal: (value: number) => void;
+  disableReset: boolean;
+  setDisableReset: (value: boolean) => void;
   resetValue: boolean;
   setResetValue: (value: boolean) => void;
   result: number;
   setResult: (value: number) => void;
+  tipAmountPP: number;
+  setTipAmountPP: (value: number) => void;
+  costumVal: string;
+  setCostumVal: (value: string) => void;
 }
 
 const InputContext = createContext<InputContextType | undefined>(undefined);
@@ -15,19 +21,28 @@ interface InputProviderProps {
   children: ReactNode;
 }
 export const InputProvider = ({ children }: InputProviderProps) => {
-  const [enableReset, setEnableReset] = useState<boolean>(true);
+  const [percentVal, setPercentVal] = useState<number>(0);
+  const [disableReset, setDisableReset] = useState<boolean>(true);
   const [resetValue, setResetValue] = useState<boolean>(false);
   const [result, setResult] = useState<number>(0);
+  const [tipAmountPP, setTipAmountPP] = useState<number>(0);
+  const [costumVal, setCostumVal] = useState<string>("");
 
   return (
     <InputContext.Provider
       value={{
+        percentVal,
+        setPercentVal,
         result,
         setResult,
-        enableReset,
-        setEnableReset,
+        disableReset,
+        setDisableReset,
         resetValue,
         setResetValue,
+        tipAmountPP,
+        setTipAmountPP,
+        costumVal,
+        setCostumVal,
       }}>
       {children}
     </InputContext.Provider>

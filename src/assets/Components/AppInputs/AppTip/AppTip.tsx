@@ -1,16 +1,38 @@
-import { ChangeEvent, useState } from "react";
-import { InputBox } from "../InputBox/InputBox";
-import { InputText } from "../InputText/InputText";
 import "./appTip.css";
+import { ChangeEvent, useEffect, useState } from "react";
+import { InputText } from "../InputText/InputText";
 
-const tipOptionsArr = ["5%", "10%", "15%", "25%", "50%"];
+import { useInputContext } from "../../../Context/InputContext";
+
+const tipOptionsArr = ["5", "10", "15", "25", "50"];
 
 export const AppTip = () => {
-  const [tipPercent, setTipPercent] = useState<string>("");
   const [isCostum, setIsCostum] = useState<boolean>(false);
+  const { costumVal, setCostumVal, setPercentVal } = useInputContext();
 
+  useEffect(() => {
+    if (Number(costumVal) > 0) {
+      setPercentVal(Number(costumVal));
+      setIsCostum(true);
+    } else {
+      setIsCostum(false);
+    }
+  }, [costumVal]);
+
+  /* Radio elements: Send value for calculation and its value*/
+  const handleRadioVal = (e: ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    setPercentVal(Number(value));
+    setCostumVal("");
+  };
+
+  /* Custom : 
+  ~ sanitizedValue : Sanitize/Clean the value by removing non-numeric value.
+  ~ setCustomVal(sanitizedValue) : Sends the value for calculation and its 'Costum' value */
   const handleTips = (e: ChangeEvent<HTMLInputElement>) => {
-    tipPercent != "" ? setIsCostum(true) : setTipPercent(e.target.value);
+    const { value } = e.target;
+    const sanitizedValue = value.replace(/[^0-9.]+/g, "").trim();
+    setCostumVal(sanitizedValue);
   };
   return (
     <div className='app-tip'>
@@ -28,20 +50,24 @@ export const AppTip = () => {
                 id={`tip-${options}`}
                 value={options}
                 disabled={isCostum}
+                onChange={handleRadioVal}
               />
-              {options}
+              {`${options}%`}
             </label>
           );
         })}
-        <label htmlFor='tip-costum'>
-          <InputBox
-            name='tip-radio'
-            id='tip-costum'
-            placeholder='Costum'
-            inputValue={tipPercent}
-            onchange={(e) => handleTips(e)}
-          />
-        </label>
+        <div className={`input-box`}>
+          <label htmlFor='tip-costum'>
+            <input
+              type='text'
+              name='tip-radio'
+              id='tip-costum'
+              placeholder='Costum'
+              value={costumVal}
+              onChange={handleTips}
+            />
+          </label>
+        </div>
       </div>
     </div>
   );

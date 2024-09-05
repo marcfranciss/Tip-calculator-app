@@ -2,7 +2,6 @@ import logo from "./assets/images/logo.svg";
 import "./App.css";
 import { AppResults } from "./assets/Components/AppResults/AppResults";
 import { AppInputs } from "./assets/Components/AppInputs/AppInputs";
-import { useState } from "react";
 import { InputProvider } from "./assets/Context/InputContext";
 
 function App() {

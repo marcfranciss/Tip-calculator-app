@@ -1,5 +1,5 @@
 import "./inputs.css";
-import { ChangeEvent, useContext, useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { InputBox } from "../../AppInputs/InputBox/InputBox";
 import { InputText } from "../../AppInputs/InputText/InputText";
 import { ErrorMsg } from "../ErrorMsg/ErrorMsg";
@@ -22,24 +22,52 @@ export const Inputs = ({
   const [amount, setAmount] = useState<string>("");
   const [isError, setIsError] = useState<boolean>(false);
   const [errorMsg, setErrorMsg] = useState<string>("");
-  const { resetValue, setEnableReset, setResetValue } = useInputContext();
+  const {
+    resetValue,
+    setDisableReset,
+    setPercentVal,
+    setResetValue,
+    setResult,
+    setTipAmountPP,
+    setCostumVal,
+  } = useInputContext();
 
   useEffect(() => {
-    resetValue &&
-      (setAmount(""),
-      setIsError(false),
-      setErrorMsg(""),
-      setEnableReset(true),
-      forComputation(""),
-      setResetValue(false));
+    const removeChecked = () => {
+      const inputs = document.querySelectorAll("input");
+      inputs.forEach((input) => input.removeAttribute("disabled"));
+      const inputsChcked = document.querySelectorAll("input:checked");
+      inputsChcked.forEach(
+        (chkd) => ((chkd as HTMLInputElement).checked = false)
+      );
+    };
+    if (resetValue) {
+      /* running the above function -- resets the radio buttons */
+      removeChecked(),
+        /* Resets the amounts */
+        setAmount(""),
+        setCostumVal(""),
+        forComputation(""),
+        setPercentVal(0),
+        setTipAmountPP(0),
+        setResult(0),
+        /* Resets error */
+        setIsError(false),
+        setErrorMsg(""),
+        /* Resets the reset button*/
+        setDisableReset(true),
+        setResetValue(false);
+    }
   }, [resetValue]);
   const handleAmount = (event: ChangeEvent<HTMLInputElement>) => {
     const { errorMsg, isError, sanitizedValue } = inputValidator(
       event.target.value
     );
-    console.log(`Amount check: ${sanitizedValue}`);
-    const cleanedVal = Number(sanitizedValue).toLocaleString();
-    setAmount(cleanedVal);
+    const cleanedVal = Number(sanitizedValue);
+    console.error(cleanedVal);
+    cleanedVal >= 1000
+      ? setAmount(cleanedVal.toLocaleString())
+      : setAmount(sanitizedValue);
     setErrorMsg(errorMsg);
     setIsError(isError);
     forComputation(sanitizedValue);

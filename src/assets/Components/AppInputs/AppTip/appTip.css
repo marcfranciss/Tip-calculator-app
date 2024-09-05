@@ -35,6 +35,10 @@
   color: var(--dark-cyan-900);
   cursor: not-allowed;
 }
+.tip-radio:has(input:disabled) {
+  background-color: var(--dark-cyan-200);
+  cursor: default;
+}
 
 @media (max-width: 48rem) {
   .tip-options {
