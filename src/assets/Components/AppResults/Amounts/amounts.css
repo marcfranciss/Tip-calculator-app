@@ -23,10 +23,20 @@
 .amount {
   display: flex;
   flex-direction: row;
+  max-width: 70%;
+  overflow: hidden;
 }
 .calc-amount {
   font-weight: 700;
   font-size: 3rem;
   letter-spacing: -1px;
   color: var(--cyan);
+  overflow-x: auto;
+}
+
+@media (max-width: 48rem) {
+  .calc-amount {
+    font-size: 2rem;
+    letter-spacing: -0.67px;
+  }
 }

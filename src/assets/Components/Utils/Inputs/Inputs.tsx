@@ -65,9 +65,11 @@ export const Inputs = ({
     );
     const cleanedVal = Number(sanitizedValue);
     console.error(cleanedVal);
-    cleanedVal >= 1000
-      ? setAmount(cleanedVal.toLocaleString())
-      : setAmount(sanitizedValue);
+    console.log(sanitizedValue);
+    // cleanedVal >= 1000
+    //   ? setAmount(cleanedVal.toLocaleString())
+    //   :
+    setAmount(sanitizedValue);
     setErrorMsg(errorMsg);
     setIsError(isError);
     forComputation(sanitizedValue);

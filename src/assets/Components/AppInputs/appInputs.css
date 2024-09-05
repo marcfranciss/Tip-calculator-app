@@ -5,7 +5,7 @@
   gap: 40px;
 }
 
-@media (max-width: 48rem) {
+@media (max-width: 68rem) {
   .app-inputs {
     gap: 2rem;
   }

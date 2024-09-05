@@ -31,3 +31,9 @@
   background-color: var(--dark-cyan-200);
   cursor: default;
 }
+
+@media (max-width: 48rem) {
+  .app-results {
+    gap: 2rem;
+  }
+}

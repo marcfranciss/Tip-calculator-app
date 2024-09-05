@@ -33,6 +33,7 @@ body {
   align-items: center;
   font-family: "Space Mono", monospace;
   font-style: normal;
+  background-color: var(--dark-cyan-600);
 }
 main {
   width: 100%;
@@ -57,13 +58,99 @@ section.calculator-app {
     padding-block: 2rem;
     padding-inline: 3rem 2rem;
     gap: 3rem;
+    background-color: var(--white);
+    border-radius: 25px;
 
     & > :nth-child(1) {
       max-width: 379px;
+      animation: slideRight 1.4s linear;
     }
     & > :nth-child(2) {
       width: 413px;
       height: 417px;
+      animation: slideLeft 1.4s linear;
     }
+  }
+}
+
+@media (max-width: 64rem) {
+  main {
+    padding-block: 50px 32px;
+    padding-inline: 2.5rem;
+  }
+  section.calculator-app {
+    gap: 40.86px;
+
+    .app {
+      padding: 2rem 1.5rem;
+    }
+  }
+}
+
+@media (max-width: 48rem) {
+  section.calculator-app {
+    .app {
+      flex-direction: column;
+      gap: 2rem;
+
+      & > :nth-child(1) {
+        max-width: none;
+        animation: slideDown 0.7s linear;
+      }
+      & > :nth-child(2) {
+        width: 100%;
+        max-width: 620px;
+        height: max-content;
+        animation: slideDown 0.7s linear;
+      }
+    }
+  }
+}
+@media (max-width: 30rem) {
+  main {
+    padding-inline: 0;
+  }
+  section.calculator-app {
+    .app {
+      max-width: 375px;
+      & > :nth-child(2) {
+        max-width: none;
+      }
+    }
+  }
+}
+
+@keyframes slideRight {
+  from {
+    opacity: 0;
+    transform: translateX(-10%);
+    box-shadow: 10px 0px 10px -4px var(--cyan);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0%);
+    box-shadow: none;
+  }
+}
+@keyframes slideLeft {
+  from {
+    opacity: 0;
+    transform: translateX(8%);
+    box-shadow: -10px 0px 10px -4px var(--cyan);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0%);
+    box-shadow: none;
+  }
+}
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-5%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0%);
   }
 }
