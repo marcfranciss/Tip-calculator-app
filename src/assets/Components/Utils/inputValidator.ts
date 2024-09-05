@@ -8,10 +8,10 @@ export const inputValidator = (value: string): {errorMsg: string, sanitizedValue
     let sanitizedValue = value
 
     if (testRegEx.test(sanitizedValue)) {
-      console.log(`sanitation is true`);
+      // console.log(`sanitation is true`);
           sanitizedValue = value;
     } else {
-      console.error(`sanitation is false (${sanitizedValue}), cleaning...`);
+      // console.error(`sanitation is false (${sanitizedValue}), cleaning...`);
       if (value === "") {
           sanitizedValue = '';
           errorMsg = `Can't be blank`;

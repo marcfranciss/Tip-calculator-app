@@ -63,12 +63,6 @@ export const Inputs = ({
     const { errorMsg, isError, sanitizedValue } = inputValidator(
       event.target.value
     );
-    const cleanedVal = Number(sanitizedValue);
-    console.error(cleanedVal);
-    console.log(sanitizedValue);
-    // cleanedVal >= 1000
-    //   ? setAmount(cleanedVal.toLocaleString())
-    //   :
     setAmount(sanitizedValue);
     setErrorMsg(errorMsg);
     setIsError(isError);
