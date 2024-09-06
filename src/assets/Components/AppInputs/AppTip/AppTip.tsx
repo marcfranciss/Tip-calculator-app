@@ -7,32 +7,32 @@ import { useInputContext } from "../../../Context/InputContext";
 const tipOptionsArr = ["5", "10", "15", "25", "50"];
 
 export const AppTip = () => {
-  const [isCostum, setIsCostum] = useState<boolean>(false);
-  const { costumVal, setCostumVal, setPercentVal } = useInputContext();
+  const [isCustom, setIsCustom] = useState<boolean>(false);
+  const { customVal, setCustomVal, setPercentVal } = useInputContext();
 
   useEffect(() => {
-    if (Number(costumVal) > 0) {
-      setPercentVal(Number(costumVal));
-      setIsCostum(true);
+    if (Number(customVal) > 0) {
+      setPercentVal(Number(customVal));
+      setIsCustom(true);
     } else {
-      setIsCostum(false);
+      setIsCustom(false);
     }
-  }, [costumVal]);
+  }, [customVal]);
 
   /* Radio elements: Send value for calculation and its value*/
   const handleRadioVal = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     setPercentVal(Number(value));
-    setCostumVal("");
+    setCustomVal("");
   };
 
   /* Custom : 
   ~ sanitizedValue : Sanitize/Clean the value by removing non-numeric value.
-  ~ setCustomVal(sanitizedValue) : Sends the value for calculation and its 'Costum' value */
+  ~ setCustomVal(sanitizedValue) : Sends the value for calculation and its 'Custom' value */
   const handleTips = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     const sanitizedValue = value.replace(/[^0-9.]+/g, "").trim();
-    setCostumVal(sanitizedValue);
+    setCustomVal(sanitizedValue);
   };
   return (
     <div className='app-tip'>
@@ -49,7 +49,7 @@ export const AppTip = () => {
                 name='tip-radio'
                 id={`tip-${options}`}
                 value={options}
-                disabled={isCostum}
+                disabled={isCustom}
                 onChange={handleRadioVal}
               />
               {`${options}%`}
@@ -57,13 +57,13 @@ export const AppTip = () => {
           );
         })}
         <div className={`input-box`}>
-          <label htmlFor='tip-costum'>
+          <label htmlFor='tip-custom'>
             <input
               type='text'
               name='tip-radio'
-              id='tip-costum'
-              placeholder='Costum'
-              value={costumVal}
+              id='tip-custom'
+              placeholder='Custom'
+              value={customVal}
               onChange={handleTips}
             />
           </label>

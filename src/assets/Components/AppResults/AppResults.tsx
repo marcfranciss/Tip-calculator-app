@@ -10,12 +10,9 @@ export const AppResults = () => {
       <div className='results'>
         <Amounts
           label='Tip Amount'
-          value={Number(tipAmountPP.toFixed(2)).toLocaleString()}
+          value={tipAmountPP.toFixed(2).toLocaleString()}
         />
-        <Amounts
-          label='Total'
-          value={Number(result.toFixed(2)).toLocaleString()}
-        />
+        <Amounts label='Total' value={result.toFixed(2).toLocaleString()} />
       </div>
       <button
         className='btn-reset'

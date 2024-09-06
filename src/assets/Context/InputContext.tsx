@@ -11,8 +11,8 @@ interface InputContextType {
   setResult: (value: number) => void;
   tipAmountPP: number;
   setTipAmountPP: (value: number) => void;
-  costumVal: string;
-  setCostumVal: (value: string) => void;
+  customVal: string;
+  setCustomVal: (value: string) => void;
 }
 
 const InputContext = createContext<InputContextType | undefined>(undefined);
@@ -26,7 +26,7 @@ export const InputProvider = ({ children }: InputProviderProps) => {
   const [resetValue, setResetValue] = useState<boolean>(false);
   const [result, setResult] = useState<number>(0);
   const [tipAmountPP, setTipAmountPP] = useState<number>(0);
-  const [costumVal, setCostumVal] = useState<string>("");
+  const [customVal, setCustomVal] = useState<string>("");
 
   return (
     <InputContext.Provider
@@ -41,8 +41,8 @@ export const InputProvider = ({ children }: InputProviderProps) => {
         setResetValue,
         tipAmountPP,
         setTipAmountPP,
-        costumVal,
-        setCostumVal,
+        customVal,
+        setCustomVal,
       }}>
       {children}
     </InputContext.Provider>

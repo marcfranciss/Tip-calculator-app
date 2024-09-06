@@ -29,7 +29,7 @@ export const Inputs = ({
     setResetValue,
     setResult,
     setTipAmountPP,
-    setCostumVal,
+    setCustomVal,
   } = useInputContext();
 
   useEffect(() => {
@@ -46,7 +46,7 @@ export const Inputs = ({
       removeChecked(),
         /* Resets the amounts */
         setAmount(""),
-        setCostumVal(""),
+        setCustomVal(""),
         forComputation(""),
         setPercentVal(0),
         setTipAmountPP(0),
@@ -69,12 +69,13 @@ export const Inputs = ({
     forComputation(sanitizedValue);
   };
   return (
-    <label htmlFor={htmlFor} className='input-data'>
+    <div className='input-data'>
       <div className='input-text-container'>
         <InputText text={text} />
         <ErrorMsg text={errorMsg} />
       </div>
       <InputBox
+        htmlFor={htmlFor}
         imgPath={imgPath}
         id={htmlFor}
         name={htmlFor}
@@ -83,6 +84,6 @@ export const Inputs = ({
         isError={isError}
         onchange={handleAmount}
       />
-    </label>
+    </div>
   );
 };

@@ -8,6 +8,7 @@ interface InputBoxProps {
   name?: string;
   id?: string;
   isError?: boolean;
+  htmlFor?: string;
   onchange?: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -19,9 +20,10 @@ export const InputBox = ({
   id,
   isError,
   onchange,
+  htmlFor,
 }: InputBoxProps) => {
   return (
-    <div className={`input-box ${isError && "error"} `}>
+    <label htmlFor={htmlFor} className={`input-box ${isError && "error"} `}>
       <img src={imgPath} alt='' />
       <input
         type='text'
@@ -32,6 +34,6 @@ export const InputBox = ({
         onChange={onchange}
         required
       />
-    </div>
+    </label>
   );
 };
