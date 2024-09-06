@@ -1,4 +1,8 @@
+h2 {
+  all: unset;
+}
 .input-text {
   font-weight: 700;
   font-size: 1rem;
+  color: var(--dark-cyan-800);
 }

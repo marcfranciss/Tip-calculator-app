@@ -10,6 +10,7 @@ function App() {
       <main>
         <section id='calculator-app' className='calculator-app'>
           <header>
+            <h1 style={{ display: "none" }}>Tip calculator app</h1>
             <img src={logo} alt='' />
           </header>
           <div className='app'>

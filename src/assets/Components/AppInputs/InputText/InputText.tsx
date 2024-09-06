@@ -4,5 +4,5 @@ interface InputTextProps {
 }
 
 export const InputText = ({ text }: InputTextProps) => {
-  return <span className='input-text'>{text}</span>;
+  return <h2 className='input-text'>{text}</h2>;
 };
